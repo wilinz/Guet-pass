@@ -245,7 +245,7 @@ class MainActivity : ComponentActivity() {
         }
         AutoResizeText(
             text = passTypeName,
-            FontSizeRange(TextUnit(20f, TextUnitType.Sp), TextUnit(26f, TextUnitType.Sp)),
+            fontSizeRange = FontSizeRange(TextUnit(20f, TextUnitType.Sp), TextUnit(26f, TextUnitType.Sp)),
             fontWeight = FontWeight.Black,
             color = Color(0xFF08B906),
             maxLines = 1,
