@@ -1,11 +1,23 @@
 package com.wilinz.guet_pass
-import androidx.preference.PreferenceManager
 
-object Pref{
+import androidx.preference.PreferenceManager
+import com.wilinz.guet_pass.tools.NameRandom
+
+object Pref {
     val pref = PreferenceManager.getDefaultSharedPreferences(App.application)
 
-    var lastName: String = "有"
-        get() = pref.getString("last_name", "有")!!
+    var passType: String = ""
+        get() = pref.getString("pass_type", "桂电学生临时通行证")!!
+        set(value) {
+            field = value
+            pref.edit().putString("pass_type", value).apply()
+        }
+
+    var lastName: String = ""
+        get() {
+            val lastName = pref.getString("last_name", "")!!
+            return lastName.ifBlank { NameRandom.getChineseName().last().toString() }
+        }
         set(value) {
             field = value
             pref.edit().putString("last_name", value).apply()
