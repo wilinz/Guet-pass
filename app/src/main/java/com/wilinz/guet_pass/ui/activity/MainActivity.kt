@@ -117,7 +117,7 @@ class MainActivity : ComponentActivity() {
                 painter = painterResource(id = R.drawable.houjie),
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth(),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.FillWidth
             )
             Image(
                 painter = painterResource(id = R.drawable.back),
