@@ -386,11 +386,12 @@ class MainActivity : ComponentActivity() {
                     .clickable {
                         ImagePreviewActivity.start(context = context)
                     }
-                    .padding(vertical = 8.dp),
+                    .padding(vertical = 12.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "注册“金钟罩”、国家反诈中心", color = Color.White, fontSize = 20.sp)
-                Text(text = "科技防诈让你远离诈骗侵害", color = Color.White, fontSize = 15.sp)
+                Text(text = "注册 “金钟罩” 、国家反诈中心", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.padding(top = 2.dp))
+                Text(text = "科技防诈让你远离诈骗侵害", color = Color.White, fontSize = 16.sp)
             }
 
         }
