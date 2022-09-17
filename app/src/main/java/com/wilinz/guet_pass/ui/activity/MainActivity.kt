@@ -93,8 +93,8 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .padding(
                         top = 107.dp,
-                        start = 13.dp,
-                        end = 14.dp
+                        start = 14.dp,
+                        end = 15.dp
                     )
                     .fillMaxWidth()
                     .background(color = Color.Transparent),
@@ -112,12 +112,20 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun Background() {
-        Image(
-            painter = painterResource(id = R.drawable.back),
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.FillBounds
-        )
+        Column(Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.houjie),
+                contentDescription = null,
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+            Image(
+                painter = painterResource(id = R.drawable.back),
+                contentDescription = null,
+                modifier = Modifier.weight(1f).fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+        }
     }
 
     @Composable
@@ -245,7 +253,10 @@ class MainActivity : ComponentActivity() {
         }
         AutoResizeText(
             text = passTypeName,
-            fontSizeRange = FontSizeRange(TextUnit(20f, TextUnitType.Sp), TextUnit(26f, TextUnitType.Sp)),
+            fontSizeRange = FontSizeRange(
+                TextUnit(20f, TextUnitType.Sp),
+                TextUnit(26f, TextUnitType.Sp)
+            ),
             fontWeight = FontWeight.Black,
             color = Color(0xFF08B906),
             maxLines = 1,
@@ -358,33 +369,46 @@ class MainActivity : ComponentActivity() {
                     .align(Alignment.BottomCenter)
                     .width(with(LocalDensity.current) { width.toDp() })
                     .background(Color.White)
-                    .height(9.5.dp)
+                    .height(8.75.dp)
             )
         }
     }
 
     @Composable
     private fun AntiFraud() {
-        Surface(
-            color = Color.Transparent,
-            //                                        shape = RoundedCornerShape(4.dp)
-        ) {
-            val context = LocalContext.current
-            Image(
-                painterResource(id = R.drawable.fanzha1),
-                contentDescription = null,
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier
-                    .padding(
-                        top = 16.dp,
-                    )
+
+        Spacer(modifier = Modifier.padding(top = 16.dp))
+        val context = LocalContext.current
+        Surface(shape = RoundedCornerShape(4.dp), color = Color(0xFF1E41DD)) {
+            Column(
+                Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(4.dp))
                     .clickable {
                         ImagePreviewActivity.start(context = context)
                     }
-            )
+                    .padding(vertical = 8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = "注册“金钟罩”、国家反诈中心", color = Color.White, fontSize = 20.sp)
+                Text(text = "科技防诈让你远离诈骗侵害", color = Color.White, fontSize = 15.sp)
+            }
+
         }
+//            Image(
+//                painterResource(id = R.drawable.fanzha1),
+//                contentDescription = null,
+//                contentScale = ContentScale.FillBounds,
+//                modifier = Modifier
+//                    .padding(
+//                        top = 16.dp,
+//                    )
+//                    .fillMaxWidth()
+//                    .height(100.dp)
+//                    .clip(RoundedCornerShape(4.dp))
+//                    .clickable {
+//                        ImagePreviewActivity.start(context = context)
+//                    }
+//            )
     }
 
     @Composable
@@ -406,8 +430,8 @@ class MainActivity : ComponentActivity() {
                     )
                 }
                 .padding(
-                    top = 15.dp,
-                    bottom = 15.dp,
+                    top = 12.dp,
+                    bottom = 12.dp,
                     start = 15.dp,
 //                    end = 20.dp
                 )
@@ -476,7 +500,7 @@ class MainActivity : ComponentActivity() {
                     val info = if (passTypeName == "桂电学生临时通行证（备案制）") {
                         "不限次数\n限制通行2次，当天有效，从首次通行开始，到当天22点或者从首次通行后2小时，取小值。每天 05:00~21:59 内可申请。"
                     } else {
-                        "1天内有效，提交后系统自动审核，总限制通行4次。"
+                        "每1天可使用4次，剩余3次\n提交后系统自动审核，总限制通行4次。"
                     }
                     Text(
                         text = info,
@@ -564,7 +588,8 @@ class MainActivity : ComponentActivity() {
                     //                                        border = BorderStroke(0.01.dp, Color(133, 133, 133)),
                     modifier = Modifier
                         //                                            .padding(8.dp)
-                        .wrapContentWidth(),
+                        .wrapContentWidth()
+                        .padding(end = 8.dp),
                     //                                            .height(32.dp),
                     color = Color(0x33000000)
                 ) {
