@@ -21,7 +21,6 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
@@ -122,7 +121,9 @@ class MainActivity : ComponentActivity() {
             Image(
                 painter = painterResource(id = R.drawable.back),
                 contentDescription = null,
-                modifier = Modifier.weight(1f).fillMaxWidth(),
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
                 contentScale = ContentScale.Crop
             )
         }
@@ -389,7 +390,12 @@ class MainActivity : ComponentActivity() {
                     .padding(vertical = 12.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "注册 “金钟罩” 、国家反诈中心", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Text(
+                    text = "注册 “金钟罩” 、国家反诈中心",
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
                 Spacer(modifier = Modifier.padding(top = 2.dp))
                 Text(text = "科技防诈让你远离诈骗侵害", color = Color.White, fontSize = 16.sp)
             }
@@ -581,18 +587,25 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .windowInsetsTopHeight(WindowInsets.statusBars)
             )
-            Row {
-                Spacer(modifier = Modifier.weight(1f))
+            Box(modifier = Modifier.fillMaxWidth()) {
+//                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = "桂电畅行证",
+                    modifier = Modifier.align(Alignment.TopCenter),
+                    color = Color.White,
+                    fontSize = 15.sp
+                )
                 val context = LocalContext.current
                 Surface(
                     shape = RoundedCornerShape(16.dp),
-                    //                                        border = BorderStroke(0.01.dp, Color(133, 133, 133)),
+                    border = BorderStroke(0.01.dp, Color(133, 133, 133)),
                     modifier = Modifier
-                        //                                            .padding(8.dp)
+                        .padding(8.dp)
+                        .align(Alignment.CenterEnd)
                         .wrapContentWidth()
                         .padding(end = 8.dp),
                     //                                            .height(32.dp),
-                    color = Color(0x33000000)
+                    color = Color(0x33000000),
                 ) {
                     Row(
                         Modifier
